@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gotham Energy - Powering Sustainability & Savings</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #19213e;
+      --olive: #909a41;
+      --purple: #251942;
+      --black: #090707;
+      --dark-blue: #00043a;
+      --green: #138808;
+      --blue: #005bac;
+      --success-green: #46c354;
+      --font-main: 'Montserrat', sans-serif;
+      --section-padding: 80px 40px;
+      --border-radius: 10px;
+      --card-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background: linear-gradient(to bottom, var(--navy), var(--dark-blue));
+      color: white;
+      line-height: 1.6;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: var(--purple);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    nav ul li a:hover {
+      color: var(--olive);
+    }
+
+    /* Section Styles */
+    section {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: var(--section-padding);
+    }
+
+    .section-light {
+      background: white;
+      color: var(--navy);
+    }
+
+    .section-dark {
+      background: linear-gradient(135deg, var(--green), var(--blue));
+      color: white;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      text-align: center;
+      padding-top: 120px;
+      overflow: hidden;
+    }
+
+    .hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0, 4, 58, 0.7), rgba(0, 4, 58, 0.9));
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      margin-bottom: 30px;
+      animation: fadeInUp 1.2s ease forwards;
+    }
+
+    /* Buttons */
+    .btn {
+      background-color: var(--olive);
+      color: white;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background-color: var(--success-green);
+      transform: translateY(-2px);
+    }
+
+    .btn-dark {
+      background-color: var(--dark-blue);
+    }
+
+    .btn-success {
+      background-color: var(--success-green);
+    }
+
+    /* Typography */
+    h1,
+    h2 {
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 2rem;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    /* Grid Layouts */
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      width: 100%;
+      margin: 40px auto 0;
+    }
+
+    /* Cards */
+    .card {
+      background: white;
+      color: var(--navy);
+      padding: 30px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--card-shadow);
+      transition: var(--transition);
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .card img {
+      width: 100%;
+      max-width: 200px;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .card.full-width img {
+      max-width: 100%;
+    }
+
+    /* About Section */
+    .about-content {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    .about-text {
+      flex: 1;
+    }
+
+    .about-image {
+      flex: 1;
+    }
+
+    .about-image img {
+      width: 100%;
+      border-radius: var(--border-radius);
+    }
+
+    /* Process Section */
+    .process-content {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    .process-steps {
+      flex: 1;
+    }
+
+    .process-step {
+      margin-bottom: 30px;
+      padding-left: 20px;
+      border-left: 3px solid var(--olive);
+    }
+
+    .process-step strong {
+      display: block;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      color: var(--dark-blue);
+    }
+
+    .process-image {
+      flex: 1;
+    }
+
+    .process-image img {
+      width: 100%;
+      border-radius: var(--border-radius);
+    }
+
+    /* Testimonial Section */
+    .testimonial {
+      max-width: 900px;
+      text-align: center;
+    }
+
+    .testimonial blockquote {
+      font-size: 1.5rem;
+      font-style: italic;
+      margin-bottom: 30px;
+      line-height: 1.8;
+    }
+
+    .testimonial-author {
+      margin-bottom: 30px;
+      font-weight: 600;
+    }
+
+    .testimonial-author span {
+      font-weight: normal;
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    /* CTA Section */
+    /* CTA Section */
+    .cta-section {
+      position: relative;
+      background: linear-gradient(135deg, var(--dark-blue), var(--green), var(--blue));
+      background-size: 400% 400%;
+      animation: gradientShift 8s ease infinite;
+      color: white;
+      text-align: center;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+      overflow: hidden;
+    }
+
+    .energy-animation {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .energy-particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: float 6s infinite linear;
+    }
+
+    .energy-particle:nth-child(1) {
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .energy-particle:nth-child(2) {
+      left: 20%;
+      animation-delay: 1s;
+    }
+
+    .energy-particle:nth-child(3) {
+      left: 30%;
+      animation-delay: 2s;
+    }
+
+    .energy-particle:nth-child(4) {
+      left: 40%;
+      animation-delay: 3s;
+    }
+
+    .energy-particle:nth-child(5) {
+      left: 50%;
+      animation-delay: 4s;
+    }
+
+    .energy-particle:nth-child(6) {
+      left: 60%;
+      animation-delay: 5s;
+    }
+
+    .energy-particle:nth-child(7) {
+      left: 70%;
+      animation-delay: 0.5s;
+    }
+
+    .energy-particle:nth-child(8) {
+      left: 80%;
+      animation-delay: 1.5s;
+    }
+
+    .energy-particle:nth-child(9) {
+      left: 90%;
+      animation-delay: 2.5s;
+    }
+
+    .energy-particle:nth-child(10) {
+      left: 15%;
+      animation-delay: 3.5s;
+    }
+
+    .energy-wave {
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: pulse 4s ease-in-out infinite;
+    }
+
+    .energy-wave:nth-child(1) {
+      top: -50%;
+      left: -50%;
+      animation-delay: 0s;
+    }
+
+    .energy-wave:nth-child(2) {
+      top: -50%;
+      right: -50%;
+      animation-delay: 2s;
+    }
+
+    .lightning-bolt {
+      position: absolute;
+      width: 2px;
+      height: 60px;
+      background: linear-gradient(to bottom, #fff, transparent);
+      animation: lightning 3s infinite;
+      opacity: 0;
+    }
+
+    .lightning-bolt:nth-child(1) {
+      left: 25%;
+      top: 20%;
+      animation-delay: 1s;
+    }
+
+    .lightning-bolt:nth-child(2) {
+      left: 75%;
+      top: 30%;
+      animation-delay: 4s;
+    }
+
+    .lightning-bolt:nth-child(3) {
+      left: 50%;
+      top: 10%;
+      animation-delay: 7s;
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 10;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--purple);
+      text-align: center;
+      padding: 30px 40px;
+      color: white;
+      font-size: 0.9rem;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      90% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-100px) scale(1);
+        opacity: 0;
+      }
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(0.8);
+        opacity: 0.3;
+      }
+
+      50% {
+        transform: scale(1.2);
+        opacity: 0.1;
+      }
+    }
+
+    @keyframes lightning {
+
+      0%,
+      90%,
+      100% {
+        opacity: 0;
+        transform: scaleY(1);
+      }
+
+      5%,
+      10% {
+        opacity: 1;
+        transform: scaleY(1.2);
+      }
+
+      15%,
+      20% {
+        opacity: 0.8;
+        transform: scaleY(0.8);
+      }
+
+      25% {
+        opacity: 0;
+        transform: scaleY(1);
+      }
+    }
+
+    .fade-in {
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      nav {
+        padding: 15px 20px;
+      }
+
+      nav ul {
+        gap: 20px;
+      }
+
+      section {
+        padding: 60px 20px;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero-video {
+        height: 120%;
+        width: 120%;
+        left: -10%;
+        top: -10%;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .about-content,
+      .process-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .testimonial blockquote {
+        font-size: 1.2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">Gotham Energy</div>
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="/video.mp4" type="video/mp4">
+      <source src="/v.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Powering Sustainability & Savings</h1>
+      <p>We're a consultancy firm specializing in energy procurement and sustainability solutions that reduce costs and
+        carbon footprints for leading institutions and enterprises.</p>
+      <a href="#contact" class="btn">Schedule a Consultation</a>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="section-light">
+    <h1>Managing over $350M in annual energy spend for leading institutions and enterprises</h1>
+
+    <div class="content-grid">
+      <div class="card">
+        <img src="/Analysing data.avif" alt="Procurement Expertise">
+        <h3>Procurement Expertise</h3>
+        <p>Optimizing energy purchasing strategies through data-driven market analysis and strategic negotiations.</p>
+      </div>
+      <div class="card">
+        <img src="/Data Processing.avif" alt="Data Processing">
+        <h3>Data Processing</h3>
+        <p>Reducing emissions through targeted sustainability initiatives and renewable energy integration.</p>
+      </div>
+      <div class="card">
+        <img src="/Financial Data.avif" alt="Financial Data">
+        <h3>Financial Data</h3>
+        <p>Harnessing advanced analytics and market intelligence for smarter energy decisions.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section-dark" id="about">
+    <div class="about-content">
+      <div class="about-image">
+        <img src="/service.avif" alt="About Gotham Energy">
+      </div>
+      <div class="about-text">
+        <h2>About Gotham Energy</h2>
+        <p>Gotham Energy is dedicated to delivering customized energy procurement and sustainability strategies that
+          help organizations lower costs and reduce carbon footprints. With a team of experienced professionals, we
+          provide insights and solutions to navigate today's complex energy landscape.</p>
+        <p>Our comprehensive approach combines market expertise, cutting-edge technology, and proven methodologies to
+          deliver measurable results for our clients.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="section-light" id="services">
+    <h1>Our Services</h1>
+    <div class="content-grid">
+      <div class="card">
+        <img src="/Gotham Icons2-13.avif" alt="Solar Installation">
+        <h3>Solar Installation</h3>
+        <p>High-efficiency solar panel systems installed and optimized for maximum energy savings and return on
+          investment.</p>
+        <a href="#contact" class="btn btn-dark">Learn More</a>
+      </div>
+      <div class="card">
+        <img src="/Gotham Icons2-13.avif" alt="EV Charging">
+        <h3>EV Charging Solutions</h3>
+        <p>Reliable electric vehicle charging infrastructure to support clean mobility and sustainable transportation.
+        </p>
+        <a href="#contact" class="btn btn-dark">Learn More</a>
+      </div>
+      <div class="card">
+        <img src="/Gotham Icons2-13.avif" alt="Energy Audits">
+        <h3>Energy Audits</h3>
+        <p>Comprehensive energy use assessments and efficiency analysis to identify cost-saving opportunities.</p>
+        <a href="#contact" class="btn btn-dark">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial Section -->
+  <section class="section-dark">
+    <div class="testimonial">
+      <blockquote>
+        "Energy Edge helped Collin College develop a comprehensive procurement strategy consistent with our risk
+        tolerance and business needs that resulted in a significant reduction in energy spend. Their technical
+        understanding of energy contracts and market dynamics is exceptional."
+      </blockquote>
+      <div class="testimonial-author">
+        Cindy White<br>
+        <span>Director of Procurement, Collin College</span>
+      </div>
+      <a href="#testimonials" class="btn btn-success">Read All Testimonials</a>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="section-light">
+    <div class="process-content">
+      <div class="process-steps">
+        <h2>How We Work</h2>
+        <div class="process-step">
+          <strong>01. Consultation & Analysis</strong>
+          <p>Initial discussion of requirements, current energy usage analysis, and feasibility assessment.</p>
+        </div>
+        <div class="process-step">
+          <strong>02. Strategy Development</strong>
+          <p>Custom solution design and implementation planning tailored to your specific needs.</p>
+        </div>
+        <div class="process-step">
+          <strong>03. Implementation & Monitoring</strong>
+          <p>Project execution with continuous performance monitoring and optimization.</p>
+        </div>
+        <a href="#contact" class="btn">Start Your Project</a>
+      </div>
+      <div class="process-image">
+        <img src="/Analysing data.avif" alt="Our Process">
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CTA Section -->
+  <section class="cta-section" id="contact">
+    <div class="energy-animation">
+      <!-- Floating Energy Particles -->
+      <div class="energy-particle"></div>
+      <div class="energy-particle"></div>
+      <div class="energy-particle"></div>
+      <div class="energy-particle"></div>
+      <div class="energy-particle"></div>
+      <div class="energy-particle"></div>
+      <div class="energy-particle"></div>
+      <div class="energy-particle"></div>
+      <div class="energy-particle"></div>
+      <div class="energy-particle"></div>
+
+      <!-- Energy Waves -->
+      <div class="energy-wave"></div>
+      <div class="energy-wave"></div>
+
+      <!-- Lightning Effects -->
+      <div class="lightning-bolt"></div>
+      <div class="lightning-bolt"></div>
+      <div class="lightning-bolt"></div>
+    </div>
+
+    <div class="cta-content">
+      <h2>Ready to Start Your Clean Energy Journey?</h2>
+      <p>Let's discuss how we can help reduce your energy costs and carbon footprint.</p>
+      <a href="tel:+1234567890" class="btn">Schedule a Call</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Gotham Energy LLC – All Rights Reserved</p>
+  </footer>
+</body>
+
+</html>
